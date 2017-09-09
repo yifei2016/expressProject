@@ -8,8 +8,74 @@
 //-Default. Specifies that autocomplete is on (enabled)
 //-In HTML5, the action attribute is no longer required.
 //-<form action="URL">
+extends index.pug
+block report
+  form
+    div.form-group
+      label(for="exampleInputPassword1")  Vasakyrkan
+      input(type='radio'  name="gender" class="form-control" id="exampleInputPassword1" value="Vasakyrkan")
+    div.form-group
+      label(for="exampleInputPassword2")  Masthuggskyrkan
+      input(type='radio'  name="gender" class="form-control" id="exampleInputPassword2" value="Masthuggskyrkan")
+    div.form-group  
+      label(for="exampleInputPassword3")  Gårdstenskyrkan
+      input(type='radio'  name="gender" class="form-control" id="exampleInputPassword3" value="Gårdstenskyrkan")
+    div.form-group
+      label(for="exampleInputPassword4")  Kortedala
+      input(type='radio'  name="gender" class="form-control" id="exampleInputPassword4" value="Kortedala")
+    button(type="button" class="btn btn-info")  Send  
+    hr
+    br
+    table(class="table")
+      thead(class="thead-inverse")
+         tr
+           th #
+           th Party Name
+           th Number of vote
+           
+      tbody
+          tr
+           th(scope="row") 1
+           td Arbetarepartiet - Socialdemokraterna
+           td Otto
+           
+          tr
+           th(scope="row") 2
+           td Borgerligt alternativ
+           td Jacob
+          
+          tr
+           th(scope="row") 3
+           td Centerpartiet
+           td Jacob
+           
+          tr
+           th(scope="row") 4
+           td Fria liberaler i Svenska kyrkan FiSK
+           td Jacob
+           
+          tr
+           th(scope="row") 5
+           td ÖPPEN KYRKA -- en kyrka för alla
+           td Jacob
+          
+          tr
+            th(scope="row") 6
+            td FRIMODIG KYRKA
+            td Jacob
+            
+          tr
+            th(scope="row") 7
+            td Kristdemokrater i Svenska kyrkan
+            td Jacob
+            
+          tr
+            th(scope="row") 8
+            td Miljöpartister i Svenska kyrkan
+            td Jacob
+            
+ 
+    
 
-block rapport
-  p yifei
 //-socket.on: Used to monitor a launched event by emit,The first parameter is the name of the event to be monitored, the second argument 
 //-is an anonymous function used to receive the data sent by the others,The first argument is the received data
