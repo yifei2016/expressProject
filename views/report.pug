@@ -12,17 +12,19 @@ extends index
 block index
   if local 
     p you voted local: #{local} and party: #{party}
+    ul(id="results") df
+
   else
     form(action='' method="post")
       div.localGroup
-        select(name='local')
+        select(name='local' id="local")
          option(value="" disabled selected) local
          option(value= valueFirst) #{valueFirst}
          option(value= valueSecond) #{valueSecond}
          option(value= valueThird) #{valueThird}
          option(value= valueFour) #{valueFour}
       div(class='partyGroup')
-        select(name='party')
+        select(name='party' id="party")
           option(value="" disabled selected) party
           option #{party.partyFirst}
           option #{party.partySecond}

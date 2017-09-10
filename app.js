@@ -3,17 +3,18 @@ var path = require('path');
 var app = express();
 var server = require('http').Server(app);
 const io = require('socket.io')(server);
+//var pug = require('pug');
 var routy = require(path.join(__dirname, 'routes'));
 const bodyParser = require('body-parser');
-//var rapportRouter = require(__dirname + '/routes/rapport.js');
+//var repportRouter = require(__dirname + '/routes/repport.js');
 
 io.on('connection', (socket) => {
     console.log("A user connected");
     socket.on('disconnect',() => {
         console.log("Now disconnected.");
     });
-    socket.on('Rapport place', (rapport) => {
-        io.emit('Rapport place', rapport);
+    socket.on('local', (report) => {
+        io.emit('local', report);
     });
 });
 
