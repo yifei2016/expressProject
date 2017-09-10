@@ -10,29 +10,32 @@
 //-<form action="URL">
 extends index
 block index
-  form(action="/report.js/" method="post")
-    div.localGroup
-      select 
-       option(value="" disabled selected) local
-       option(value="#{valueFirst}") #{valueFirst}
-       option(value="#{valueFirst}") #{valueSecond}
-       option(value="#{valueFirst}") #{valueThird}
-       option(value="#{valueFirst}") #{valueFour}
-    div(class='partyGroup')
-      select 
-       option(value="" disabled selected) party
-       option #{party.partyFirst}
-       option #{party.partySecond}
-       option #{party.partyThird}
-       option #{party.partyFive}
-       option #{party.partySix}
-       option #{party.partySeven}
-       option #{party.partyEight}
-       option #{party.partyNine}
-       option #{party.partyTen}
-     
-    div.vote 
-       input(type="submit" class="btn btn-info" value='vote')    
+  if local 
+    p you voted local: #{local} and party: #{party}
+  else
+    form(action='' method="post")
+      div.localGroup
+        select(name='local')
+         option(value="" disabled selected) local
+         option(value= valueFirst) #{valueFirst}
+         option(value= valueSecond) #{valueSecond}
+         option(value= valueThird) #{valueThird}
+         option(value= valueFour) #{valueFour}
+      div(class='partyGroup')
+        select(name='party')
+          option(value="" disabled selected) party
+          option #{party.partyFirst}
+          option #{party.partySecond}
+          option #{party.partyThird}
+          option #{party.partyFive}
+          option #{party.partySix}
+          option #{party.partySeven}
+          option #{party.partyEight}
+          option #{party.partyNine}
+          option #{party.partyTen}
+       
+      div.vote 
+         input(type="submit" class="btn btn-info" value='vote')    
     
  
     

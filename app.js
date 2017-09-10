@@ -3,8 +3,8 @@ var path = require('path');
 var app = express();
 var server = require('http').Server(app);
 const io = require('socket.io')(server);
-var pug = require('pug');
 var routy = require(path.join(__dirname, 'routes'));
+const bodyParser = require('body-parser');
 //var rapportRouter = require(__dirname + '/routes/rapport.js');
 
 io.on('connection', (socket) => {
@@ -47,6 +47,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use('/result', function(req,res){
 //   res.render(routy)
 // });
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use('/',routy);
 
 // catch 404 and forward to error handler
