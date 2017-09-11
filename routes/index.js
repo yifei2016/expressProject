@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();//spread routing
 const path = require('path');//node function!!!
 const report = require(__dirname + '/report');//require file(module) or built in module, but not in same path, locate it with path.join
-const resultHandler = require(path.join(__dirname, 'result'));
+const result = require(path.join(__dirname, 'result'));
 const handle404 = require(path.join(__dirname, '404'));
 
 
@@ -15,11 +15,10 @@ router.get('/', function(req, res, next) {
 // app.get('/',function(req,res){
 //   res.sendFile('index.html');
 // });
-
-router.get('/result', resultHandler);
-
 router.get('/report', report.reportHandler);
-router.post('/report', report.formHandler);
+router.post('/report', report.formHandler);//form post method
+router.get('/result', result.resultRender);
+
 
 router.get('*', handle404);
 

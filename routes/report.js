@@ -18,16 +18,27 @@ function reportHandler(req,res){
     }
   });
 }
-
+var result = {};
 function formHandler(req,res){
   console.log('local: ' + req.body.local)
   console.log('party: ' + req.body.party)
+  // var result = {
+  //   local: 'dfsdf'
+  // }
+  // res.send(JSON.stringify(result))//after stringify, object become json
   res.render(
     'report', {
       local: req.body.local,
       party: req.body.party
     }
   )
+  if(req.body.local){
+    result[req.body.local]++
+  }
+
+  result[req.body.local] = 1
+  console.log('result' + JSON.stringify(result))
+
 }
 module.exports = {
   reportHandler: reportHandler,

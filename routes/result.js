@@ -1,6 +1,16 @@
-function resultHandler(req, res) {
-  console.log('result')
-  res.render('resultFile');
+
+var result = {};
+function resultRender(req, res) {
+  console.log('result1' + req.body.local)
+  
+  res.render(
+    'resultFile',{
+       local: result.body.local,
+       party: result.body.party
+    }
+  )
 }
 
-module.exports = resultHandler;
+module.exports = {
+  resultRender: resultRender
+}

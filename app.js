@@ -7,6 +7,9 @@ const io = require('socket.io')(server);
 var routy = require(path.join(__dirname, 'routes'));
 const bodyParser = require('body-parser');
 //var repportRouter = require(__dirname + '/routes/repport.js');
+//how to get data passed from a form in Express (Node.js)
+//Use bodyParser.urlencoded() middleware:  then the form values will be on req.body:
+
 
 io.on('connection', (socket) => {
     console.log("A user connected");
