@@ -16,8 +16,8 @@ io.on('connection', (socket) => {
     socket.on('disconnect',() => {
         console.log("Now disconnected.");
     });
-    socket.on('local', (report) => {
-        io.emit('local', report);
+    socket.on('resultFile', (report) => {
+        io.emit('resultFile', report);
     });
 });
 
@@ -31,9 +31,6 @@ io.on('connection', (socket) => {
 
 // var index = require('./routes/index');
 // var users = require('./routes/users');
-
-
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

@@ -24,7 +24,8 @@ function reportHandler(req,res){
 
 function formHandler(req,res){
   var result = require(path.join(__dirname, 'result.json'))//read file
-
+//当vote request来了。
+//先从file里把result string读出来，然后转换成js object 然后用js 加1。 然后再转换成json string 然后再写到file里。
   // var result = {
   //   local: 'dfsdf'
   // }
@@ -34,7 +35,7 @@ function formHandler(req,res){
   }else{
      result[req.body.local] = 1
   }
-
+//add property to result
   fs.writeFileSync(path.join(__dirname, 'result.json'), JSON.stringify(result))
   //to solve async problem, otherwise it is equal to writeFile
   res.render('report', {
