@@ -1,3 +1,6 @@
+const path = require('path');
+var fs = require('fs');
+
 function reportHandler(req,res){
   console.log('reporthandler')
   res.render('report',{
@@ -18,28 +21,33 @@ function reportHandler(req,res){
     }
   });
 }
-var result = {};
+
 function formHandler(req,res){
-  console.log('local: ' + req.body.local)
-  console.log('party: ' + req.body.party)
+  var result = require(path.join(__dirname, 'result.json'))//read file
+
   // var result = {
   //   local: 'dfsdf'
   // }
   // res.send(JSON.stringify(result))//after stringify, object become json
-  res.render(
-    'report', {
-      local: req.body.local,
-      party: req.body.party
-    }
-  )
-  if(req.body.local){
+  if(result[req.body.local] ){
     result[req.body.local]++
+  }else{
+     result[req.body.local] = 1
   }
 
-  result[req.body.local] = 1
-  console.log('result' + JSON.stringify(result))
-
+  fs.writeFileSync(path.join(__dirname, 'result.json'), JSON.stringify(result))
+  //to solve async problem, otherwise it is equal to writeFile
+  res.render('report', {
+    local: req.body.local,
+    party: req.body.party,
+    vote: req.body.vote
+  })
+  // res.render('resultFile', {
+  //  result: result
+  // })
 }
+//resultFile will use result variable, so render result value to resultFile
+
 module.exports = {
   reportHandler: reportHandler,
   formHandler: formHandler

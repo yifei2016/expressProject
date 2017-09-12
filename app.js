@@ -21,6 +21,8 @@ io.on('connection', (socket) => {
     });
 });
 
+//-socket.on: Used to monitor a launched event by emit,The first parameter is the name of the event to be monitored, the second argument
+//-is an anonymous function used to receive the data sent by the others,The first argument is the received data
 
 //var favicon = require('serve-favicon');
 // var logger = require('morgan');

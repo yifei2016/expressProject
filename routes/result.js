@@ -1,16 +1,15 @@
+const path = require('path');//node function!!!
 
-var result = {};
 function resultRender(req, res) {
-  console.log('result1' + req.body.local)
-  
+  var result = require(path.join(__dirname, 'result.json'))//object
+  console.log(result + '-----------------')
   res.render(
-    'resultFile',{
-       local: result.body.local,
-       party: result.body.party
+    'resultFile', {
+      result: result
     }
   )
 }
-
+//render must have filename and object
 module.exports = {
   resultRender: resultRender
 }

@@ -12,8 +12,8 @@
 extends index
 block index
   if local 
-    p you voted local: #{local} and party: #{party}
-    ul(id="results") df
+    p you voted #[span.vote #{vote}] for the party: #[span.vote #{party}] at local: #[span.vote #{local}]. 
+    ul(id="results") 
 
   else
     form(action='/report' method="post")
@@ -35,8 +35,8 @@ block index
           option #{party.partySeven}
           option #{party.partyEight}
           option #{party.partyNine}
-          option #{party.partyTen}
-       
+          option #{party.partyTen}   
+        input(type="number"  value='vote' name="vote") 
       div.vote 
          input(type="submit" class="btn btn-info" value='vote') 
     div.result   
@@ -45,5 +45,3 @@ block index
  
 //- form use name to transfer data  
 //-action in form means http request except form reload page, form always render html
-//-socket.on: Used to monitor a launched event by emit,The first parameter is the name of the event to be monitored, the second argument 
-//-is an anonymous function used to receive the data sent by the others,The first argument is the received data

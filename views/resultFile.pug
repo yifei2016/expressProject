@@ -4,6 +4,8 @@
 //- Jag som användare ska inte behöva uppdatera den för att se senaste resultat.*/
 extends index
 block index
-  p #{local}
+  ul
+    each value, key in result
+      li= key + ': ' + value
   
   
