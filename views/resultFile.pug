@@ -4,7 +4,14 @@
 //- Jag som användare ska inte behöva uppdatera den för att se senaste resultat.*/
 extends index
 block index
-  ul(id='client')
+  div
+    table(id="client" )
+      tr
+        th(id='local') local
+        th(id='party') party
+        th voteNumber
+        
+    
   //- ul
   //-   each value, key in result
   //-     li= key + ': ' + value

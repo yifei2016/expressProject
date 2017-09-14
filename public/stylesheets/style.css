@@ -18,3 +18,11 @@ a {
 .vote{
   color: red;
 }
+table {
+  width:80%;
+    margin: auto;
+}
+
+.vote{
+  margin-top: 2%;
+}

@@ -13,15 +13,18 @@ const bodyParser = require('body-parser');
 
 io.on('connection', (socket) => {
     console.log("A user connected");
-    socket.on('disconnect',() => {
-        console.log("Now disconnected.");
-    });
-    socket.on('resultFile', (report) => {
-        io.emit('resultFile', report);
+    // socket.on('disconnect',() => {
+    //     console.log("Now disconnected.");
+    // });
+    // old event 2,
+    socket.on('vote', (msg) => {
+
+        io.emit('voted', msg);//new event 1
     });
 });
 
-//-socket.on: Used to monitor a launched event by emit,The first parameter is the name of the event to be monitored, the second argument
+//-socket.on: Used to monitor a launched event by emit,The first parameter is the name of the event to be monitored,
+//the second argument
 //-is an anonymous function used to receive the data sent by the others,The first argument is the received data
 
 //var favicon = require('serve-favicon');
@@ -51,7 +54,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 //   res.render(routy)
 // });
 app.use(bodyParser.urlencoded({ extended: true }));
-
+// routy.post('/vote', function(req,res){
+//   io.emit('vote', msg);
+//   res.render('resultFile')
+// });
 app.use('/',routy);
 
 // catch 404 and forward to error handler

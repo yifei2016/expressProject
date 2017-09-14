@@ -6,18 +6,19 @@ const result = require(path.join(__dirname, 'result.js'));
 const handle404 = require(path.join(__dirname, '404'));
 
 
-router.get('/', function(req, res, next) {
-  console.log(path.join(__dirname, '../views/index.pug'))//why we use path.join instead of require, because .. not work in require
-  console.log(path.join(__dirname, '..','views','index.pug')) //we use, instead of /, because / work on mac or linux, \ on windows
-  //console.log(__dirname + '../views/index.html')
-  res.render('index');
-});
+// router.get('/', function(req, res, next) {
+//   console.log(path.join(__dirname, '../views/index.pug'))//why we use path.join instead of require, because .. not work in require
+//   console.log(path.join(__dirname, '..','views','index.pug')) //we use, instead of /, because / work on mac or linux, \ on windows
+//   //console.log(__dirname + '../views/index.html')
+//   res.render('index');
+// });
 // app.get('/',function(req,res){
 //   res.sendFile('index.html');
 // });
-router.get('/report', report.reportHandler);
-router.post('/report', report.formHandler);//form post method
+router.get('/', report.reportHandler);
 router.get('/result', result.resultRender);
+
+//router.get('/result', result.resultRender);
 
 
 router.get('*', handle404);

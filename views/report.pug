@@ -9,39 +9,33 @@
 //-In HTML5, the action attribute is no longer required.
 //-<form action="URL">
 //- option(value= valueFirst) #{valueFirst}  after=, no #{}   
+//-action attribute specifies where to send the form-data when a form is submitted.
 extends index
 block index
-  if local 
-    p you voted #[span.vote #{vote}] for the party: #[span.vote #{party}] at local: #[span.vote #{local}]. 
-    ul(id="results") 
-
-  else
-    form(action='/report' method="post")
+    form(action='')
       div.localGroup
         select(name='local' id="local")
          option(value="" disabled selected) local
-         option(value= valueFirst) #{valueFirst}
-         option(value= valueSecond) #{valueSecond}
-         option(value= valueThird) #{valueThird}
-         option(value= valueFour) #{valueFour}
+         option(value= valueFirst) Vasakyrkan
+         option(value= valueSecond) Masthuggskyrkan
+         option(value= valueThird) Gårdstenskyrkan
+         option(value= valueFour) Kortedala
       div(class='partyGroup')
         select(name='party' id="party")
           option(value="" disabled selected) party
-          option #{party.partyFirst}
-          option #{party.partySecond}
-          option #{party.partyThird}
-          option #{party.partyFive}
-          option #{party.partySix}
-          option #{party.partySeven}
-          option #{party.partyEight}
-          option #{party.partyNine}
-          option #{party.partyTen}   
-        input(type="number"  value='vote' name="vote") 
+          option SPI Seniorpartiet
+          option Arbetarepartiet - Socialdemokraterna
+          option Borgerligt alternativ
+          option Centerpartiet
+          option Fria liberaler i Svenska kyrkan FiSK
+          option ÖPPEN KYRKA -- en kyrka för alla
+          option FRIMODIG KYRKA
+          option Kristdemokrater i Svenska kyrkan
+          option Miljöpartister i Svenska kyrkan
+      input(type="number"  value='vote' name="vote" id='voteNumber') 
       div.vote 
-         input(type="submit" class="btn btn-info" value='vote') 
-    div.result   
-      form(action='/result' method="get")
-         input(type='submit' class='btn btn-success result' value='result' ) 
- 
+         input(type="submit" class="btn btn-info" value='vote' id='vote') 
+    
+    
 //- form use name to transfer data  
 //-action in form means http request except form reload page, form always render html
