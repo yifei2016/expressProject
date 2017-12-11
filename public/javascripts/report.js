@@ -2,7 +2,6 @@
 $(function () {
   let socket = io();
   $('form').submit(function(){
-    
     var msg = {
       local: $("#local").val(),
       party: $("#party").val(),
